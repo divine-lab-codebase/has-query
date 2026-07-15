@@ -48,6 +48,7 @@ class HasuraClient {
             headers: { "Content-Type": "application/json", ...(this.adminSecret && { "x-hasura-admin-secret": this.adminSecret }) },
             body: JSON.stringify({ query, variables }),
         });
+        if (!res.ok) throw new Error(`GraphQL request failed with status ${res.status}: ${res.statusText}`);
         const json = await res.json();
         if (json.errors) throw new Error(JSON.stringify(json.errors, null, 2));
         return json.data as T;
