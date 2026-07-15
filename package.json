@@ -37,8 +37,7 @@
     },
     "dependencies": {
         "@divine-lab/cache": "^1.0.2",
-        "@divine-lab/logger": "^2.0.1",
-        "redis": "^5.11.0"
+        "@divine-lab/logger": "^2.0.1"
     },
     "devDependencies": {
         "@types/node": "^25.9.2",
