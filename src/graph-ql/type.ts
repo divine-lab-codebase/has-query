@@ -1,4 +1,5 @@
-/** Defines a GraphQL query structure with optional transformation and invalidation.
+/**
+ * Defines a GraphQL query structure with optional transformation and invalidation.
  * @template Variables - The type of variables accepted by the query.
  * @template RawOutput - The raw output type returned by the GraphQL query.
  * @template Output - The final output type after applying the optional transform function. Defaults to RawOutput.
@@ -18,4 +19,5 @@ export type GQL<Variables extends Record<string, any>, RawOutput, Output = RawOu
     readonly errorHandler?: (error: unknown, variables: Variables) => void;
     readonly timeout?: number;
     readonly invalidate?: (variables: Variables, context: Context, rawData: RawOutput, transformedData: Output) => string[];
+    readonly invalidatePrefixes?: (variables: Variables, context: Context, rawData: RawOutput, transformedData: Output) => string[];
 };

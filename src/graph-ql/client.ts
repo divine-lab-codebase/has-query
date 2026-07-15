@@ -1,14 +1,16 @@
+import hasQueryGlobalState from "../index.js";
 import logger from "@divine-lab/logger";
 import { COLORS } from "@divine-lab/logger/colors";
 
 //#region ---- Setup environment variables ----
-const HASURA_GRAPHQL_ENDPOINT = process.env.HASURA_GRAPHQL_ENDPOINT;
+const HASURA_GRAPHQL_ENDPOINT = hasQueryGlobalState.HASURA_GRAPHQL_URL;
 if (!HASURA_GRAPHQL_ENDPOINT) logger.exit(0, `${COLORS.red}[HAS-QUERY]${COLORS.reset} - [HASURA] - ${COLORS.gray}HASURA_GRAPHQL_ENDPOINT${COLORS.reset} environment variable not set.`);
-const HASURA_GRAPHQL_ADMIN_SECRET = process.env.HASURA_GRAPHQL_ADMIN_SECRET;
+const HASURA_GRAPHQL_ADMIN_SECRET = hasQueryGlobalState.HASURA_GRAPHQL_ADMIN_SECRET;
 if (!HASURA_GRAPHQL_ADMIN_SECRET) logger.exit(0, `${COLORS.red}[HAS-QUERY]${COLORS.reset} - [HASURA] - ${COLORS.gray}HASURA_GRAPHQL_ADMIN_SECRET${COLORS.reset} environment variable not set.`);
 //#endregion
 
-/** HasuraClient is a singleton class that provides a simple interface for sending GraphQL requests to a Hasura endpoint.
+/**
+ * HasuraClient is a singleton class that provides a simple interface for sending GraphQL requests to a Hasura endpoint.
  */
 class HasuraClient {
     // ---- Singleton instance ----
@@ -16,14 +18,16 @@ class HasuraClient {
     private readonly endpoint: string;
     private readonly adminSecret?: string;
 
-    /** Private constructor to enforce singleton pattern. Use HasuraClient.getInstance() to get the instance.
+    /**
+     * Private constructor to enforce singleton pattern. Use HasuraClient.getInstance() to get the instance.
      */
     private constructor() {
         this.endpoint = HASURA_GRAPHQL_ENDPOINT!;
         this.adminSecret = HASURA_GRAPHQL_ADMIN_SECRET!;
     }
 
-    /** Get the singleton instance of HasuraClient. If it doesn't exist, it will be created.
+    /**
+     * Get the singleton instance of HasuraClient. If it doesn't exist, it will be created.
      * @returns HasuraClient The singleton instance of HasuraClient.
      */
     static getInstance(): HasuraClient {
@@ -31,7 +35,8 @@ class HasuraClient {
         return HasuraClient.instance;
     }
 
-    /** Send a GraphQL request to the Hasura endpoint.
+    /**
+     * Send a GraphQL request to the Hasura endpoint.
      * @param query The GraphQL query or mutation string.
      * @param variables Optional variables for the GraphQL query or mutation.
      * @returns A promise that resolves to the data returned by Hasura.

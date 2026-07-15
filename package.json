@@ -4,7 +4,7 @@
     "description": "A simple utility library for building GraphQL queries with caching support.",
     "author": {
         "name": "Ishpreet Singh",
-        "email": "ishpreet7521@gmail.com",
+        "email": "ishpreet@appshala.com",
         "github": "https://github.com/Ishpreet-Singh-Channa",
         "linkedin": "https://www.linkedin.com/in/ishpreet-singh-5860ab257"
     },
@@ -13,11 +13,11 @@
         "graphql",
         "gql",
         "hasura",
-        "redis",
         "utility"
     ],
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "type": "module",
     "files": [
         "dist"
     ],
@@ -26,13 +26,9 @@
             "default": "./dist/graph-ql/index.js",
             "types": "./dist/graph-ql/index.d.ts"
         },
-        "./sql": {
-            "default": "./dist/sql/query.js",
-            "types": "./dist/sql/query.d.ts"
-        },
-        "./cache": {
-            "default": "./dist/redis/index.js",
-            "types": "./dist/redis/index.d.ts"
+        "./errors": {
+            "default": "./dist/errors/QueryError.js",
+            "types": "./dist/errors/QueryError.d.ts"
         }
     },
     "scripts": {
@@ -40,7 +36,8 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@divine-lab/logger": "^1.0.2",
+        "@divine-lab/cache": "^1.0.1",
+        "@divine-lab/logger": "^2.0.1",
         "@divine-lab/request": "^1.3.0",
         "redis": "^5.11.0"
     },
