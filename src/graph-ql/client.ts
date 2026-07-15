@@ -4,9 +4,9 @@ import { COLORS } from "@divine-lab/logger/colors";
 
 //#region ---- Setup environment variables ----
 const HASURA_GRAPHQL_ENDPOINT = hasQueryGlobalState.HASURA_GRAPHQL_URL;
-if (!HASURA_GRAPHQL_ENDPOINT) logger.exit(0, `${COLORS.red}[HAS-QUERY]${COLORS.reset} - [HASURA] - ${COLORS.gray}HASURA_GRAPHQL_ENDPOINT${COLORS.reset} environment variable not set.`);
+if (!HASURA_GRAPHQL_ENDPOINT) logger.exit(1, `${COLORS.red}[@divine-lab/has-query]${COLORS.reset} - [GQL] - ${COLORS.gray}HASURA_GRAPHQL_ENDPOINT${COLORS.reset} environment variable not set. EXITING.`);
 const HASURA_GRAPHQL_ADMIN_SECRET = hasQueryGlobalState.HASURA_GRAPHQL_ADMIN_SECRET;
-if (!HASURA_GRAPHQL_ADMIN_SECRET) logger.exit(0, `${COLORS.red}[HAS-QUERY]${COLORS.reset} - [HASURA] - ${COLORS.gray}HASURA_GRAPHQL_ADMIN_SECRET${COLORS.reset} environment variable not set.`);
+if (!HASURA_GRAPHQL_ADMIN_SECRET) logger.exit(1, `${COLORS.red}[@divine-lab/has-query]${COLORS.reset} - [GQL] - ${COLORS.gray}HASURA_GRAPHQL_ADMIN_SECRET${COLORS.reset} environment variable not set. EXITING.`);
 //#endregion
 
 /**
