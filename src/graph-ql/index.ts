@@ -41,7 +41,7 @@ export async function execute<Variables extends Record<string, any>, RawOutput, 
 
         // 3. Store in cache if key function is provided and invalidate any relevant cache keys
         if (query.key && hasQueryGlobalState.CACHE) {
-            hasQueryGlobalState.CACHE.set(query.key(variables, context), result, query.timeout || 0).catch((error) => logger.error(`${colorize("red", "[@divine-lab/has-query]")} Failed to set cache for GraphQL query.`, { error, key: query.key!(variables, context), variables }));
+            hasQueryGlobalState.CACHE.set(query.key(variables, context), result as any, query.timeout || 0).catch((error) => logger.error(`${colorize("red", "[@divine-lab/has-query]")} Failed to set cache for GraphQL query.`, { error, key: query.key!(variables, context), variables }));
         }
         if (query.invalidate && hasQueryGlobalState.CACHE) {
             hasQueryGlobalState.CACHE.invalidate(query.invalidate(variables, context, rawData, result)).catch((error) => logger.error(`${colorize("red", "[@divine-lab/has-query]")} Failed to invalidate cache for GraphQL query.`, { error, keysToInvalidate: query.invalidate!(variables, context, rawData, result), variables }));

@@ -36,8 +36,8 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@divine-lab/cache": "^1.0.2",
-        "@divine-lab/logger": "^2.0.1"
+        "@divine-lab/cache": "^1.1.1",
+        "@divine-lab/logger": "^3.0.3"
     },
     "devDependencies": {
         "@types/node": "^25.9.2",
