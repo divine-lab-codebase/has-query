@@ -19,7 +19,10 @@
     "types": "dist/index.d.ts",
     "type": "module",
     "files": [
-        "dist"
+        "dist",
+        "README.md",
+        "CHANGELOG.md",
+        "LICENSE"
     ],
     "exports": {
         "./gql": {
