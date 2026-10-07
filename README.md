@@ -12,10 +12,14 @@ npm install @divine-lab/has-query
 
 ## Setup
 
-The library requires 2 Environment variablesto operate.
+The library requires 2 Environment variables to operate.
 
-- `DIVINE_LAB_HAS_QUERY_HASURA_GRAPHQL_URL`: The hasura graphql endpoint for requests.
-- `DIVINE_LAB_HAS_QUERY_HASURA_GRAPHQL_ADMIN_SECRET`: The hasura Admin Secret.
+| Env Variable                                     | type    | required | Description                                           |
+| ------------------------------------------------ | ------- | -------- | ----------------------------------------------------- |
+| DIVINE_LAB_HAS_QUERY_HASURA_GRAPHQL_URL          | string  | true     | The hasura graphql endpoint for requests.             |
+| DIVINE_LAB_HAS_QUERY_HASURA_GRAPHQL_ADMIN_SECRET | string  | false    | The hasura Admin Secret.                              |
+| DIVINE_LAB_HAS_QUERY_CACHE_ENABLED               | Boolean | false    | (default: false) Weather to enable query caching.     |
+| DIVINE_LAB_HAS_QUERY_INITIALIZATION_LOGS         | Boolean | false    | (default: true) Weather to print Initialization logs. |
 
 ## Exports
 
@@ -183,3 +187,8 @@ console.log(user); // -> { id, name, email } OR null
 ```
 
 ---
+
+## Caching
+
+The caching is done using the <a href="https://www.npmjs.com/package/@divine-lab/cache">@divine-lab/cache</a> Library, It requires certain setup, Read more about it when enabling cache.
+
